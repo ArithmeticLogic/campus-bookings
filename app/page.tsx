@@ -1,4 +1,6 @@
-import Link from "next/link";
+export const metadata = {
+    title: 'Home',
+}
 
 export default function Home() {
   return (
@@ -8,8 +10,4 @@ export default function Home() {
           <h1>Welcome</h1>
       </main>
   )
-}
-
-export const metadata = {
-    title: 'Home',
 }

@@ -1,5 +1,9 @@
 import { resources } from '@/lib/resources'
 
+export const metadata = {
+    title: 'Resources',
+}
+
 export default function Resources() {
     return (
         <main>
@@ -14,8 +18,4 @@ export default function Resources() {
             </ul>
         </main>
     )
-}
-
-export const metadata = {
-    title: 'Resources',
 }

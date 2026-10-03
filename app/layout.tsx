@@ -1,6 +1,13 @@
 import Link from 'next/link'
 import './globals.css'
-import {Metadata} from "next";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: {
+        template: '%s · Campus Bookings',
+        default: 'Campus Bookings',
+    },
+}
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
@@ -14,17 +21,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Link href='/bookings'>Bookings</Link>
       </nav>
 
-      <main>{children}</main>
+      <main className='max-w-5xl mx-auto p-6 wrapper on'>
+          {children}
+      </main>
 
       <footer className='flex items-start bg-slate-900 p-4'>Footer</footer>
       </body>
       </html>
   )
-}
-
-export const metadata: Metadata = {
-    title: {
-        template: '%s · Campus Bookings',
-        default: 'Campus Bookings',
-    },
 }

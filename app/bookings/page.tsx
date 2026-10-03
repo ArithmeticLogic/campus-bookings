@@ -1,4 +1,6 @@
-import Link from "next/link";
+export const metadata = {
+    title: 'Bookings',
+}
 
 export default function Bookings() {
     return (
@@ -13,8 +15,4 @@ export default function Bookings() {
             </ul>
         </main>
     )
-}
-
-export const metadata = {
-    title: 'Bookings',
 }
