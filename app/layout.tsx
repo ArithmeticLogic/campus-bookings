@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import './globals.css'
+import {Metadata} from "next";
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
@@ -19,4 +20,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       </body>
       </html>
   )
+}
+
+export const metadata: Metadata = {
+    title: {
+        template: '%s · Campus Bookings',
+        default: 'Campus Bookings',
+    },
 }

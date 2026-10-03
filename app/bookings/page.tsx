@@ -3,6 +3,8 @@ import Link from "next/link";
 export default function Bookings() {
     return (
         <main>
+            <h1 className='p-4.5'>{metadata.title}</h1>
+
             <ul>
                 <li></li>
             </ul>
@@ -11,5 +13,5 @@ export default function Bookings() {
 }
 
 export const metadata = {
-    title: 'Resources',
+    title: 'Bookings',
 }

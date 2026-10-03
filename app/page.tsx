@@ -3,8 +3,9 @@ import Link from "next/link";
 export default function Home() {
   return (
       <main>
-        <h1>Campus Bookings</h1>
-        <p>Rooms, IT kit and sports facilities.</p>
+          <h1 className='p-4.5'>{metadata.title}</h1>
+
+          <p>Rooms, IT kit and sports facilities.</p>
         <ul>
           <li>Study rooms</li>
           <li>IT equipment</li>
@@ -16,5 +17,5 @@ export default function Home() {
 }
 
 export const metadata = {
-    title: 'Resources',
+    title: 'Home',
 }
