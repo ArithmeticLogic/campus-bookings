@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { resources } from '@/lib/resources'
 
 export default function Resources() {
     return (
@@ -6,7 +6,11 @@ export default function Resources() {
             <h1 className='p-4.5'>{metadata.title}</h1>
 
             <ul>
-                <li></li>
+                {resources.map((resource) => (
+                    <li key={resource.id}>
+                        {resource.name}
+                    </li>
+                    ))}
             </ul>
         </main>
     )
