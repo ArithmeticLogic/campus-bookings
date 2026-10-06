@@ -1,4 +1,5 @@
 import { resources } from '@/lib/resources'
+import ResourceCard from '@/app/resources/resource-card.tsx'
 
 export const metadata = {
     title: 'Resources',
@@ -6,16 +7,19 @@ export const metadata = {
 
 export default function Resources() {
     return (
+        // Mobile first design
         <main>
-            <h1 className='p-4.5'>{metadata.title}</h1>
+            <h1 className="p-4">{metadata.title}</h1>
 
-            <ul>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {resources.map((resource) => (
-                    <li key={resource.id}>
-                        {resource.name}
-                    </li>
-                    ))}
-            </ul>
+                    <ResourceCard
+                        key={resource.id}
+                        resource={resource}
+                        popular={false}
+                    />
+                ))}
+            </div>
         </main>
     )
 }

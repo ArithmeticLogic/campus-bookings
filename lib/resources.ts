@@ -11,3 +11,11 @@ export const resources: Resource[] = [
     { id: 'cam1', name: 'Camera Kit', type: 'equipment', capacity: 1 },
     { id: 'court', name: 'Sports Hall', type: 'sport', capacity: 30 },
 ]
+
+export function getResource(
+    id: string,
+) {
+    return resources.find(
+        (resource) => resource.id === id,
+    )
+}

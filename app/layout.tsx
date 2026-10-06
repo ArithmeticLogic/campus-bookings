@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import './globals.css'
+import NavLinks from '@/app/_components/nav-links'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,9 +16,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <h1 className='p-4.5'>Campus Bookings</h1>
 
       <nav className='flex items-center justify-evenly bg-slate-900 p-4' aria-label="Main">
-          <Link href="/">Home</Link>
-          <Link href="/resources">Resources</Link>
-          <Link href='/bookings'>Bookings</Link>
+          <NavLinks />
       </nav>
 
       <main className='max-w-5xl mx-auto p-6 wrapper on'>
