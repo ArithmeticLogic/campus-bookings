@@ -5,9 +5,7 @@ export const metadata = {
 export default function Home() {
   return (
       <main>
-          <h1 className='p-4.5'>{metadata.title}</h1>
-
-          <h1>Welcome</h1>
+          <h1 className='text-accent bg-brand border-accent'>Welcome</h1>
       </main>
   )
 }

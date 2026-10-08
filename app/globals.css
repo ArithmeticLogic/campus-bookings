@@ -5,6 +5,11 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-brand: #1B2A4A; /* bg-brand */
+  --color-accent: #E8573A; /* text-accent or border-accent */
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
