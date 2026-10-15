@@ -14,16 +14,47 @@ datasource db {
 
 // Modelling a database
 model Resource {
-    id Int @id @default(autoincrement())
-    slug String @unique
-    name String
-    type ResourceType
-    capacity Int
-    createdAt DateTime @default(now())
+  id        Int          @id @default(autoincrement())
+  slug      String       @unique
+  name      String
+  type      ResourceType
+  capacity  Int
+  createdAt DateTime     @default(now())
+  bookings  Booking[]
 }
 
 enum ResourceType {
-    room
-    equipment
-    sport
+  room
+  equipment
+  sport
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String
+  role     Role      @default(student)
+  bookings Booking[]
+}
+
+enum Role {
+  student
+  admin
+}
+
+model Booking {
+  id         Int      @id @default(autoincrement())
+  startAt    DateTime
+  endsAt     DateTime
+  // Linking to a resource
+  user       User     @relation(fields: [userID], references: [id])
+  userID     Int
+  // Linking to a resource
+  resource   Resource @relation(fields: [resourceID], references: [id])
+  resourceID Int
+  // ? = can be null
+  note       String?
+  CreatedAt  DateTime @default(now())
+
+  @@index([resourceID, startAt])
 }
