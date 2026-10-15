@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Modelling a database
+model Resource {
+  id        Int          @id @default(autoincrement())
+  slug      String       @unique
+  name      String
+  type      ResourceType
+  capacity  Int
+  createdAt DateTime     @default(now())
+  bookings  Booking[]
+}
+
+enum ResourceType {
+  room
+  equipment
+  sport
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String
+  role     Role      @default(student)
+  bookings Booking[]
+}
+
+enum Role {
+  student
+  admin
+}
+
+model Booking {
+  id         Int      @id @default(autoincrement())
+  startAt    DateTime
+  endsAt     DateTime
+  // Linking to a resource
+  user       User     @relation(fields: [userID], references: [id])
+  userID     Int
+  // Linking to a resource
+  resource   Resource @relation(fields: [resourceID], references: [id])
+  resourceID Int
+  // ? = can be null
+  note       String?
+  CreatedAt  DateTime @default(now())
+
+  @@index([resourceID, startAt])
+}
