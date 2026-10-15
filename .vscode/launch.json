@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Next Dev",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev"
+    },
+    {
+      "name": "Launch Integrated Browser",
+      "type": "editor-browser",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Start Next.js + Browser",
+      "configurations": [
+        "Run Next Dev",
+        "Launch Integrated Browser"
+      ]
+    }
+  ]
+}
