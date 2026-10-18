@@ -2,9 +2,12 @@ import "dotenv/config";
 import { prisma } from "../lib/prisma";
 
 async function main() {
+  // Delete existing data
   await prisma.booking.deleteMany(); // children first
   await prisma.user.deleteMany();
   await prisma.resource.deleteMany();
+
+  // Create resources
   await prisma.resource.createMany({
     data: [
       { slug: "g12", name: "Study Room G12", type: "room", capacity: 6 },
@@ -13,5 +16,36 @@ async function main() {
       { slug: "court", name: "Sports Hall", type: "sport", capacity: 30 },
     ],
   });
+
+  // Find the study room
+  const g12 = await prisma.resource.findUniqueOrThrow({
+    where: { slug: "g12" },
+  });
+
+  // Create student and booking
+  await prisma.user.create({
+    data: {
+      email: "amy@example.ac.uk",
+      name: "Amy Student",
+      role: "student",
+      bookings: {
+        create: {
+          resourceID: g12.id,
+          startAt: new Date("2026-10-06T10:00:00Z"),
+          endsAt: new Date("2026-10-06T11:00:00Z"),
+        },
+      },
+    },
+  });
+
+  // Create admin
+  await prisma.user.create({
+    data: {
+      email: "tylor@example.ac.uk",
+      name: "Tylor Admin",
+      role: "admin",
+    },
+  });
 }
+
 main().finally(() => prisma.$disconnect());
