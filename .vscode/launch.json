@@ -8,6 +8,18 @@
       "command": "npm run dev"
     },
     {
+      "name": "Run Prisma Dev",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npx prisma dev"
+    },
+    {
+      "name": "Run Prisma Studio",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npx prisma studio"
+    },
+    {
       "name": "Launch Integrated Browser",
       "type": "editor-browser",
       "request": "launch",
@@ -17,10 +29,11 @@
   ],
   "compounds": [
     {
-      "name": "Start Next.js + Browser",
+      "name": "Start Web App",
       "configurations": [
         "Run Next Dev",
-        "Launch Integrated Browser"
+        "Launch Integrated Browser",
+        "Run Prisma Dev"
       ]
     }
   ]
