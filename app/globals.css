@@ -1,13 +1,29 @@
 @import "tailwindcss";
 
+/* Dark mode toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Removed all default css in replacement for tailwind
+
+/* Default light colors
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
 @theme {
-  --color-brand: #1B2A4A; /* bg-brand */
-  --color-accent: #E8573A; /* text-accent or border-accent */
+  --color-brand: var(--color-violet-950);
+  --color-accent: var(--color-white);
+
+  /* Modern css, does not require .dark
+  --color-brand: light-dark(var(--color-violet-400), var(--color-violet-950));
+}
+
+@layer theme {
+  .dark {
+    --color-brand: var(--color-violet-50);
+    --color-accent: var(--color-black);
+  }
 }
 
 @theme inline {
@@ -17,10 +33,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Default dark colors
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
@@ -29,3 +46,4 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+*/
