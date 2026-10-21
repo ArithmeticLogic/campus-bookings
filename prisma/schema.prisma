@@ -21,12 +21,24 @@ model Resource {
   capacity  Int
   createdAt DateTime     @default(now())
   bookings  Booking[]
+
+  // Linking to a building
+  // buildingId Int? allows a resource to exist without a building (Null state).
+  building   Building? @relation(fields: [buildingId], references: [id])
+  buildingId Int?
 }
 
 enum ResourceType {
   room
   equipment
   sport
+}
+
+model Building {
+  id        Int        @id @default(autoincrement())
+  slug      String     @unique
+  name      String
+  resources Resource[]
 }
 
 model User {
@@ -44,17 +56,17 @@ enum Role {
 
 model Booking {
   id         Int      @id @default(autoincrement())
-  startAt    DateTime
+  startsAt   DateTime
   endsAt     DateTime
   // Linking to a resource
-  user       User     @relation(fields: [userID], references: [id])
-  userID     Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
   // Linking to a resource
-  resource   Resource @relation(fields: [resourceID], references: [id])
-  resourceID Int
+  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId Int
   // ? = can be null
   note       String?
-  CreatedAt  DateTime @default(now())
+  createdAt  DateTime @default(now())
 
-  @@index([resourceID, startAt])
+  @@index([resourceId, startsAt])
 }
