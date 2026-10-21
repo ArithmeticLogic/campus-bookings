@@ -1,11 +1,19 @@
-import { resources } from "@/lib/resources";
+import { prisma } from "@/lib/prisma";
 import ResourceCard from "@/app/resources/resource-card";
 
 export const metadata = {
   title: "Resources",
 };
 
-export default function Resources() {
+export default async function Resources() {
+  const resources = await prisma.resource.findMany({
+    orderBy: { name: "asc" },
+    include: {
+      // Because building exists within resources
+      building: true,
+    },
+  });
+
   return (
     // Mobile first design
     <main>
