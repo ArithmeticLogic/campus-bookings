@@ -15,7 +15,7 @@ export default function ResourceCard({ resource, popular }: Props) {
       <h2 className="font-bold">{resource.name}</h2>
       <p>Seats: {resource.capacity}</p>
       <p>Type: {resource.type}</p>
-      <p>Building: {resource.building?.name ?? "Not assigned"}</p>
+      <p>Location: {resource.building?.name ?? "Not assigned"}</p>
       {popular && <p>Popular this week</p>}
 
       <div className="flex-1 border-t bg-black dark:bg-white m-1.5"></div>

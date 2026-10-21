@@ -13,12 +13,11 @@ export default async function ResourcePage(
   if (!resource) notFound();
 
   return (
-    <article className="space-y-4">
-      <h2 className="text-3xl font-bold">{resource.name}</h2>
+    <article>
+      <h2 className="font-bold">{resource.name}</h2>
       <p>Seats: {resource.capacity}</p>
       <p>Type: {resource.type}</p>
-
-      {resource.building && <p>Building: {resource.building.name}</p>}
+      <p>Location: {resource.building?.name ?? "Not assigned"}</p>
     </article>
   );
 }
