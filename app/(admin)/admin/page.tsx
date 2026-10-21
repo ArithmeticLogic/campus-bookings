@@ -1,7 +1,11 @@
-export default function Admin() {
-    return (
-        <main>
+export const metadata = {
+  title: "Admin",
+};
 
-        </main>
-    )
+export default function Admin() {
+  return (
+    <main>
+      <h1>Welcome</h1>
+    </main>
+  );
 }

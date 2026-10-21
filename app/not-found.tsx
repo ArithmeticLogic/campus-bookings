@@ -1,10 +1,7 @@
-import Link from 'next/link'
-
 export default function NotFound() {
-    return (
-        <main>
-            <h1 className="p-4">Error</h1>
-            <Link href='/resources'>Resources</Link>
-        </main>
-    )
+  return (
+    <main>
+      <h1>404 Not Found</h1>
+    </main>
+  );
 }
